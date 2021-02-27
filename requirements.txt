@@ -1,0 +1,3 @@
+beautifulsoup4
+requests
+neo4j == 1.7.6
