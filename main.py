@@ -73,7 +73,7 @@ def path(start, end, driver, **kwargs):
             print(f"  {node.get('name')}")
 
 
-def build_network(start, depth, driver, visit, timeout=1):
+def build_network(start, depth, driver, visit, timeout=0.5):
     """Scrapes all links on the `start` url.
     In case of an `RequestException` or `TimeoutError` does nothing.
     """
@@ -81,7 +81,7 @@ def build_network(start, depth, driver, visit, timeout=1):
         session.write_transaction(create_url, start, depth)
 
     try:
-        signal.alarm(3)
+        signal.alarm(2)
         r = requests.get(start, headers=headers, timeout=timeout)
         soup = BeautifulSoup(r.text, 'html.parser')
         signal.alarm(0)
